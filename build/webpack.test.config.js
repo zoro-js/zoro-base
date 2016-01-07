@@ -2,15 +2,15 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './test/unit/specs/index.js',
+    entry: 'test/unit/specs/index.js',
     output: {
-        path: path.resolve(__dirname, '../test/unit'),
+        path: path.resolve('test/unit'),
         filename: 'specs.js'
     },
     resolve: {
-        alias: {
-            src: path.resolve(__dirname, '../')
-        }
+        root: [
+            path.resolve('.')
+        ]
     },
     devServer: {
         contentBase: './test/unit',

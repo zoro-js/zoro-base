@@ -1,4 +1,4 @@
-var util = require('src/util');
+var util = require('util');
 
 describe('util type related', function() {
     var str = 'foo';

@@ -1,4 +1,4 @@
-var util = require('src/util');
+var util = require('util');
 
 describe('util url related', function() {
     it('genUrlSep', function() {
