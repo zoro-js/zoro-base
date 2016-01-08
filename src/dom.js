@@ -33,19 +33,21 @@ dom.createIframe = function(options) {
             if (!iframe.src) {
                 return;
             }
-            dom.off(iframe, 'load', onIframeLoad);
+            if (!options.multi) {
+                dom.off(iframe, 'load', onIframeLoad);
+            }
             options.onload(event);
         });
-        // will trigger onload
-        var parent = options.parent;
-        (parent || document.body).appendChild(iframe);
-        // ensure trigger onload async
-        var src = options.src || 'about:blank';
-        setTimeout(function() {
-            iframe.src = src;
-        }, 0);
-        return iframe;
     }
+    // will trigger onload
+    var parent = options.parent;
+    (parent || document.body).appendChild(iframe);
+    // ensure trigger onload async
+    var src = options.src || 'about:blank';
+    setTimeout(function() {
+        iframe.src = src;
+    }, 0);
+    return iframe;
 };
 
 module.exports = dom;
