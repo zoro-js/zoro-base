@@ -1,4 +1,3 @@
-
 var util = {};
 
 util.o = util.emptyObj = {};

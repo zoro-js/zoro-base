@@ -1,6 +1,15 @@
 var util = require('util');
 
 describe('util object related', function() {
+    it('merge', function() {
+        var foo = {
+            a: 0
+        };
+        var bar = {};
+        var baz = {};
+        var obj = util.merge({}, foo);
+        expect(obj).toEqual(foo);
+    });
     it('fetch', function() {
         var foo = {
             a: 0,

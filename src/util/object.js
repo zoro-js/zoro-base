@@ -1,4 +1,14 @@
 var util = require('./index');
+var mixin = require('./mixin');
+
+util.merge = function(to) {
+    to = to || {};
+    var arr = [].slice.call(arguments, 1);
+    arr.forEach(function(obj) {
+        mixin(to, obj);
+    });
+    return to;
+};
 
 util.fetch = function(obj, config) {
     Object.keys(obj).forEach(function(key) {
