@@ -20,6 +20,20 @@ util.fetch = function(obj, config) {
     return obj;
 };
 
+util.string2object = function(string, sep) {
+    var obj = {};
+    string = string || '';
+    string.split(sep).forEach(function(pair) {
+        var arr = pair.split('=');
+        var key = arr.shift();
+        if (!key) {
+            return;
+        }
+        obj[decodeURIComponent(key)] = decodeURIComponent(arr.join('='));
+    });
+    return obj;
+};
+
 util.object2string = function(obj, sep, encode) {
     if (!obj) {
         return '';

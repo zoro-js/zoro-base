@@ -28,6 +28,14 @@ describe('util object related', function() {
         };
         expect(util.fetch(foo, bar)).toEqual(baz);
     });
+    it('string2object', function() {
+        var str = '';
+        expect(util.string2object(str)).toEqual({});
+        str = 'a=1';
+        expect(util.string2object(str)).toEqual({a:'1'});
+        str = 'a=1&b=2';
+        expect(util.string2object(str, '&')).toEqual({a:'1',b:'2'});
+    });
     it('object2string', function() {
         var obj = {
             k1: 'v1',

@@ -1,5 +1,9 @@
 var dom = require('dom');
 
+var http = location.protocol === 'http:';
+var src1 = http ? 'http://www.163.com/' : 'https://www.baidu.com/';
+var src2 = http ? 'http://mail.163.com/' : 'https://github.com/';
+
 describe('createIframe', function() {
     it('empty options', function(done) {
         var iframe = dom.createIframe();
@@ -26,13 +30,12 @@ describe('createIframe', function() {
         expect(iframe.style.display).not.toEqual('none');
     });
     it('src', function(done) {
-        var src = 'https://www.baidu.com/';
         var options = {
-            src: src
+            src: src1
         };
         var iframe = dom.createIframe(options);
         setTimeout(function() {
-            expect(iframe.src).toEqual(src);
+            expect(iframe.src).toEqual(src1);
             done();
         }, 10);
     });
@@ -52,11 +55,11 @@ describe('onload related', function() {
         iframe = dom.createIframe(options);
         setTimeout(function() {
             expect(onload.calls.count()).toEqual(1);
-            iframe.src = 'https://www.baidu.com/';
+            iframe.src = src1;
             setTimeout(function() {
                 expect(onload.calls.count()).toEqual(1);
                 done();
-            }, 1000);
+            }, 2000);
         }, 1000);
     });
     it('multi onload', function(done) {
@@ -64,11 +67,11 @@ describe('onload related', function() {
         iframe = dom.createIframe(options);
         setTimeout(function() {
             expect(onload.calls.count()).toEqual(1);
-            iframe.src = 'https://www.baidu.com/';
+            iframe.src = src1;
             setTimeout(function() {
                 expect(onload.calls.count()).toEqual(2);
                 done();
-            }, 1000);
+            }, 2000);
         }, 1000);
     });
 });
