@@ -44,4 +44,16 @@ describe('util object related', function() {
         expect(util.object2string(obj)).toBe('k1=v1,k2=2');
         expect(util.object2string(obj,'/')).toBe('k1=v1/k2=2');
     });
+    it('checkWithDefault', function() {
+        var initialValue = 'value';
+        var obj = {
+            key: initialValue
+        };
+        var value = util.checkWithDefault(obj, 'key', 'dft');
+        expect(value).toBe(initialValue);
+        value = util.checkWithDefault(obj, 'KEY', 'dft');
+        expect(value).toBe(initialValue);
+        value = util.checkWithDefault(obj, 'k', 'v');
+        expect(value).toBe('v');
+    });
 });

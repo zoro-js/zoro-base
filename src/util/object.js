@@ -58,3 +58,12 @@ util.object2string = function(obj, sep, encode) {
     });
     return arr.join(sep || ',');
 };
+
+util.checkWithDefault = function(obj, key, dft) {
+    var value = obj[key] || obj[key.toLowerCase()];
+    if (!value) {
+        value = dft;
+        obj[key] = value;
+    }
+    return value;
+};
