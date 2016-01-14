@@ -18,6 +18,10 @@ dom.off = dom.removeEventListener = function(node, type, callback) {
     }
 };
 
+dom.target = function(event) {
+    return event.target|| event.srcElement;
+};
+
 dom.createIframe = function(options) {
     options = options || {};
     var iframe = document.createElement('iframe');

@@ -12,7 +12,6 @@ util.merge = function(to) {
 
 util.fetch = function(obj, config) {
     Object.keys(obj).forEach(function(key) {
-        var value = obj[key];
         if (util.exist(config[key])) {
             obj[key] = config[key];
         }
