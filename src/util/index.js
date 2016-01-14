@@ -1,5 +1,7 @@
 var util = {};
 
+util.mixin = require('./mixin');
+
 util.o = util.emptyObj = {};
 
 util.f = util.emptyFunc = function() {};
