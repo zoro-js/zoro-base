@@ -1,6 +1,6 @@
 {
   "name": "zoro-base",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "base",
   "main": "index.js",
   "scripts": {
@@ -34,6 +34,5 @@
     "webpack-stream": "^3.1.0",
     "yargs": "^3.31.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
