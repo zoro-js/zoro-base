@@ -8,6 +8,14 @@ dom.remove = function(node) {
     }
 };
 
+dom.dataset = function(node, key, value) {
+    if (util.exist(value)) {
+        node.setAttribute('data-'+key, value);
+    } else {
+        return node.getAttribute('data-'+key);
+    }
+};
+
 dom.on = dom.addEventListener = function(node, type, callback) {
     if (node.addEventListener) {
         node.addEventListener(type, callback, false);

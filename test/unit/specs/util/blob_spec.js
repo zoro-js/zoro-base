@@ -6,7 +6,7 @@ describe('blob', function() {
     it('blobFromDataURL', function() {
         if (!!window.Blob) {
             var blob = util.blobFromDataURL(dataURL);
-            expect(blob instanceof Blob).toBe(true);
+            expect(blob).toEqual(jasmine.any(Blob));
         }
     });
 });
