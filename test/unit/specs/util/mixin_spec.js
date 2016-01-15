@@ -1,3 +1,4 @@
+var util = require('util');
 var mixin = require('util/mixin');
 
 describe('mixin', function() {

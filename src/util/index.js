@@ -10,7 +10,7 @@ util.regBlank = util.regWhiteSpace = /\s+/ig;
 
 module.exports = util;
 
-var arr = ['object', 'type', 'url', 'id'];
+var arr = ['object', 'type', 'url', 'id', 'blob'];
 arr.forEach(function(name) {
     require('./' + name);
 });
