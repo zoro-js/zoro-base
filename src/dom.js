@@ -2,6 +2,12 @@ var util = require('./util');
 
 var dom = {};
 
+dom.remove = function(node) {
+    if (!!node.parentNode) {
+        node.parentNode.removeChild(node);
+    }
+};
+
 dom.on = dom.addEventListener = function(node, type, callback) {
     if (node.addEventListener) {
         node.addEventListener(type, callback, false);
@@ -22,6 +28,7 @@ dom.target = function(event) {
     return event.target|| event.srcElement;
 };
 
+// TODO untest
 dom.html2node = function(html) {
     var div = window.document.createElement('div');
     div.innerHTML = html;
