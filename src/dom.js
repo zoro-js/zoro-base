@@ -22,6 +22,27 @@ dom.target = function(event) {
     return event.target|| event.srcElement;
 };
 
+dom.html2node = function(html) {
+    var div = window.document.createElement('div');
+    div.innerHTML = html;
+    var children = [],
+        i,
+        l;
+    if (!!div.children) {
+        for (i=0, l=div.children.length; i<l; i++) {
+            children.push(div.children[i]);
+        }
+    } else {
+        for (i=0, l=div.childNodes.length; i<l; i++) {
+            var child = div.childNodes[i];
+            if (child.nodeType === 1) {
+                children.push(child);
+            }
+        }
+    }
+    return children.length > 1 ? div : children[0];
+};
+
 dom.createIframe = function(options) {
     options = options || {};
     var iframe = document.createElement('iframe');

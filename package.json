@@ -35,6 +35,5 @@
     "yargs": "^3.31.0"
   },
   "dependencies": {
-    "gulp-shell": "^0.5.1"
   }
 }
