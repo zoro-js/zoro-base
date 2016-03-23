@@ -69,7 +69,7 @@ dom.createIframe = function(options) {
         iframe.style.display = 'none';
     }
     if (util.isFunction(options.onload)) {
-        dom.on(iframe, 'load', function onIframeLoad(event) {
+        var onIframeLoad = function(event) {
             if (!iframe.src) {
                 return;
             }
@@ -77,7 +77,8 @@ dom.createIframe = function(options) {
                 dom.off(iframe, 'load', onIframeLoad);
             }
             options.onload(event);
-        });
+        };
+        dom.on(iframe, 'load', onIframeLoad);
     }
     // will trigger onload
     var parent = options.parent;
