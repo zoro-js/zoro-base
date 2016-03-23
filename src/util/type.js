@@ -29,7 +29,7 @@ util.isFunction = function(o) {
 };
 
 util.isObject = function(o) {
-    return util.typeOf(o) === 'object';
+    return util.exist(o) && util.typeOf(o) === 'object';
 };
 
 util.isDate = function(o) {
