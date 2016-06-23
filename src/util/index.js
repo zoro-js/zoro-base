@@ -1,16 +1,16 @@
-var util = {};
+var util = {}
 
-util.mixin = require('./mixin');
+util.mixin = require('./mixin')
 
-util.o = util.emptyObj = {};
+util.o = util.emptyObj = {}
 
-util.f = util.emptyFunc = function() {};
+util.f = util.emptyFunc = function () {}
 
-util.regBlank = util.regWhiteSpace = /\s+/ig;
+util.regBlank = util.regWhiteSpace = /\s+/ig
 
-module.exports = util;
+module.exports = util
 
-var arr = ['object', 'type', 'url', 'id', 'blob'];
-arr.forEach(function(name) {
-    require('./' + name);
-});
+var arr = ['object', 'type', 'url', 'id', 'blob']
+arr.forEach(function (name) {
+  require('./' + name)
+})

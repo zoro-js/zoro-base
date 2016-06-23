@@ -2,7 +2,7 @@
 // Generated on Wed Jan 06 2016 23:13:15 GMT+0800 (CST)
 var webpackConfig = require('./webpack.test.config')
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -28,11 +28,11 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'test/unit/specs/index.js': ['webpack']
+      'test/unit/specs/index.js': ['webpack']
     },
     webpack: webpackConfig,
     webpackMiddleware: {
-        noInfo: true
+      noInfo: true
     },
 
 

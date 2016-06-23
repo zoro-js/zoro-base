@@ -1,8 +1,8 @@
-var util = require('./index');
+var util = require('./index')
 
-util.uniqueID = (function() {
-    var id = 0;
-    return function() {
-        return ''+(id++);
-    };
-}());
+util.uniqueID = (function () {
+  var id = 0
+  return function () {
+    return '' + (id++)
+  }
+}())

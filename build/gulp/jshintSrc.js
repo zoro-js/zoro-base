@@ -1,1 +1,1 @@
-module.exports = ['src/**/*.js'];
+module.exports = ['src/**/*.js']
