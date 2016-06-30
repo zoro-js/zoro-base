@@ -1,11 +1,23 @@
+/**
+* @Author: Yingya Zhang <zyy>
+* @Date:   2016-06-30 09:54:00
+* @Email:  zyy7259@gmail.com
+* @Last modified by:   zyy
+* @Last modified time: 2016-06-30 10:19:87
+*/
+
 var util = require('./index')
 
 /*
  * 类型相关 API
  */
 
+util.getClass = function (o) {
+  return Object.prototype.toString.call(o).slice(8, -1)
+}
+
 util.typeOf = function (o) {
-  return Object.prototype.toString.call(o).slice(8, -1).toLowerCase()
+  return util.getClass(o).toLowerCase()
 }
 
 util.isString = function (o) {
@@ -66,4 +78,8 @@ util.exist = function (o) {
 
 util.notexist = function (o) {
   return util.undef(o) || util.isnull(o)
+}
+
+util.isEmpty = function (o) {
+  return util.notexist(o) || o === ''
 }
