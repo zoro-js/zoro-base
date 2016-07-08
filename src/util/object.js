@@ -1,5 +1,13 @@
-var util = require('./index')
-var mixin = require('./mixin')
+/**
+* @Author: Yingya Zhang <zyy>
+* @Date:   2016-01-07 22:16:00
+* @Email:  zyy7259@gmail.com
+* @Last modified by:   zyy
+* @Last modified time: 2016-07-08 11:39:04
+*/
+
+var util = require('./index');
+var mixin = require('./mixin');
 
 util.merge = function (to) {
   to = to || {}
@@ -65,4 +73,8 @@ util.checkWithDefault = function (obj, key, dft) {
     obj[key] = value
   }
   return value
+};
+
+util.simpleClone = function (obj) {
+  return JSON.parse(JSON.stringify(obj))
 }
