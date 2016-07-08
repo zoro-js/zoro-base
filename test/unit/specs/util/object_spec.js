@@ -3,7 +3,7 @@
 * @Date:   2016-01-07 22:17:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-08 11:40:01
+* @Last modified time: 2016-07-08 12:00:24
 */
 
 var util = require('util');
@@ -71,5 +71,22 @@ describe('util object related', function() {
       var objc = util.simpleClone(obj)
       expect(obj).not.toBe(objc)
       expect(obj).toEqual(objc)
+    })
+    it('fillUndef', function () {
+      var obj = {
+        key1: 'aaa',
+        key2: null
+      }
+      var dft = {
+        key1: '111',
+        key2: '222',
+        key3: '333'
+      }
+      util.fillUndef(obj, dft)
+      expect(obj).toEqual({
+        key1: 'aaa',
+        key2: null,
+        key3: '333'
+      })
     })
 });

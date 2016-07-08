@@ -3,7 +3,7 @@
 * @Date:   2016-01-07 22:16:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-08 11:39:04
+* @Last modified time: 2016-07-08 12:01:05
 */
 
 var util = require('./index');
@@ -77,4 +77,13 @@ util.checkWithDefault = function (obj, key, dft) {
 
 util.simpleClone = function (obj) {
   return JSON.parse(JSON.stringify(obj))
+}
+
+util.fillUndef = function (obj, defaultObj) {
+  for (var key in defaultObj) {
+    if (defaultObj.hasOwnProperty(key) && util.undef(obj[key])) {
+      obj[key] = defaultObj[key]
+    }
+  }
+  return obj
 }

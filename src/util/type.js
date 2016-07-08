@@ -3,7 +3,7 @@
 * @Date:   2016-06-30 09:54:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-06-30 10:19:87
+* @Last modified time: 2016-07-08 11:56:17
 */
 
 var util = require('./index')
@@ -64,6 +64,7 @@ util.notnull = function (o) {
   return o !== null
 }
 
+// 需要用 typeof 来比较，兼容性好
 util.undef = function (o) {
   return typeof o === 'undefined'
 }
