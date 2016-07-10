@@ -3,13 +3,37 @@
 * @Date:   2016-06-23 13:45:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-06-23 13:52:66
+* @Last modified time: 2016-07-10 13:27:74
 */
 
-var util = require('./util')
 
-util.date = require('./date')
-util.css = require('./css')
-util.dom = require('./dom')
+import * as blob from './blob'
+import * as css from './css'
+import * as consts from './const'
+import * as date from './date'
+import forOwn from './forOwn'
+import * as id from './id'
+import mixin from './mixin'
+import * as object from './object'
+import * as type from './type'
+import * as url from './url'
 
-module.exports = util
+// util.dom = require('./dom')
+
+object.merge(
+  exports,
+  blob,
+  css,
+  consts,
+  date,
+  {
+    forOwn: forOwn
+  },
+  id,
+  {
+    mixin: mixin
+  },
+  object,
+  type,
+  url
+)

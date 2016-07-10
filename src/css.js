@@ -1,32 +1,30 @@
 /*
 * @Author: Zhang Yingya(hzzhangyingya)
 * @Date:   2016-03-30 16:52:45
-* @Last Modified by:   Zhang Yingya(hzzhangyingya)
-* @Last Modified time: 2016-03-30 16:53:44
+* @Last modified by:   zyy
+* @Last modified time: 2016-07-10 12:57:03
 */
 
-var css = {};
+export function detectCSSFeature (featurename) {
+  let feature = false
+  const domPrefixes = 'Webkit Moz ms O'.split(' ')
+  const elm = document.createElement('div')
+  let featurenameCapital = null
 
-css.detectCSSFeature = function(featurename){
-    var feature = false,
-    domPrefixes = 'Webkit Moz ms O'.split(' '),
-    elm = document.createElement('div'),
-    featurenameCapital = null;
+  featurename = featurename.toLowerCase()
 
-    featurename = featurename.toLowerCase();
+  if (elm.style[featurename] !== undefined) {
+    feature = true
+  }
 
-    if( elm.style[featurename] !== undefined ) { feature = true; } 
-
-    if( feature === false ) {
-        featurenameCapital = featurename.charAt(0).toUpperCase() + featurename.substr(1);
-        for( var i = 0; i < domPrefixes.length; i++ ) {
-            if( elm.style[domPrefixes[i] + featurenameCapital ] !== undefined ) {
-              feature = true;
-              break;
-            }
-        }
+  if (feature === false) {
+    featurenameCapital = featurename.charAt(0).toUpperCase() + featurename.substr(1)
+    for (let i = 0; i < domPrefixes.length; i++) {
+      if (elm.style[domPrefixes[i] + featurenameCapital] !== undefined) {
+        feature = true
+        break
+      }
     }
-    return feature; 
-};
-
-module.exports = css;
+  }
+  return feature
+}

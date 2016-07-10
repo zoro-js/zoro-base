@@ -3,58 +3,56 @@
 * @Date:   2016-06-23 13:40:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-06-30 11:00:90
+* @Last modified time: 2016-07-10 13:03:62
 */
 
-var dateUtil = module.exports
-
-dateUtil.fix = function (number, count) {
+export function fix (number, count) {
   count = count || 2
-  var str = '' + number
+  let str = '' + number
   while (str.length < count) {
     str = '0' + str
   }
   return str
 }
 
-dateUtil.getYearStr = function (date) {
+export function getYearStr (date) {
   return '' + date.getFullYear()
 }
 
-dateUtil.getMonthStr = function (date) {
-  return dateUtil.fix(date.getMonth() + 1)
+export function getMonthStr (date) {
+  return fix(date.getMonth() + 1)
 }
 
-dateUtil.getDayStr = function (date) {
-  return dateUtil.fix(date.getDate())
+export function getDayStr (date) {
+  return fix(date.getDate())
 }
 
-dateUtil.getHourStr = function (date) {
-  return dateUtil.fix(date.getHours())
+export function getHourStr (date) {
+  return fix(date.getHours())
 }
 
-dateUtil.getMinuteStr = function (date) {
-  return dateUtil.fix(date.getMinutes())
+export function getMinuteStr (date) {
+  return fix(date.getMinutes())
 }
 
-dateUtil.getSecondStr = function (date) {
-  return dateUtil.fix(date.getSeconds())
+export function getSecondStr (date) {
+  return fix(date.getSeconds())
 }
 
-dateUtil.getMillisecondStr = function (date) {
-  return dateUtil.fix(date.getMilliseconds(), 3)
+export function getMillisecondStr (date) {
+  return fix(date.getMilliseconds(), 3)
 }
 
-dateUtil.format = (function () {
+export const format = (() => {
   var reg = /yyyy|MM|dd|hh|mm|ss|SSS/g
   var mappers = {
-    yyyy: dateUtil.getYearStr,
-    MM: dateUtil.getMonthStr,
-    dd: dateUtil.getDayStr,
-    hh: dateUtil.getHourStr,
-    mm: dateUtil.getMinuteStr,
-    ss: dateUtil.getSecondStr,
-    SSS: dateUtil.getMillisecondStr
+    yyyy: getYearStr,
+    MM: getMonthStr,
+    dd: getDayStr,
+    hh: getHourStr,
+    mm: getMinuteStr,
+    ss: getSecondStr,
+    SSS: getMillisecondStr
   }
   return function (date, format) {
     date = new Date(date)
@@ -68,7 +66,7 @@ dateUtil.format = (function () {
   }
 })()
 
-dateUtil.dateFromDateTimeLocal = function (str) {
+export function dateFromDateTimeLocal (str) {
   str = '' + str
   return new Date(str.replace(/-/g, '/').replace('T', ' '))
 }

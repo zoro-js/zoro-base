@@ -1,6 +1,14 @@
+/**
+* @Author: Yingya Zhang <zyy>
+* @Date:   2016-07-08 11:29:00
+* @Email:  zyy7259@gmail.com
+* @Last modified by:   zyy
+* @Last modified time: 2016-07-09 19:24:93
+*/
+
 var dom = require('dom')
 
-describe('target', function () {
+xdescribe('target', () => {
   var de = document.documentElement
   var bd = document.body
   var domStr = '<div id="p1"><i id="c1"></i></div><div id="p2"><i id="c2"></i></div>'

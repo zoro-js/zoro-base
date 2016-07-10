@@ -1,4 +1,12 @@
-var util = require('./util')
+/**
+* @Author: Yingya Zhang <zyy>
+* @Date:   2016-07-08 11:29:00
+* @Email:  zyy7259@gmail.com
+* @Last modified by:   zyy
+* @Last modified time: 2016-07-10 13:05:90
+*/
+
+var util = {}
 
 var dom = {}
 
@@ -85,7 +93,7 @@ dom.createIframe = function (options) {
   (parent || document.body).appendChild(iframe)
     // ensure trigger onload async
   var src = options.src || 'about:blank'
-  setTimeout(function () {
+  setTimeout(() => {
     iframe.src = src
   }, 0)
   return iframe

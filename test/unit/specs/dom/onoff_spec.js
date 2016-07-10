@@ -1,27 +1,35 @@
+/**
+* @Author: Yingya Zhang <zyy>
+* @Date:   2016-07-08 11:29:00
+* @Email:  zyy7259@gmail.com
+* @Last modified by:   zyy
+* @Last modified time: 2016-07-09 19:24:05
+*/
+
 var dom = require('dom')
 
-describe('on/off', function () {
+xdescribe('on/off', () => {
   var cb
   var body = document.body
-  beforeEach(function () {
+  beforeEach(() => {
     cb = jasmine.createSpy('cb')
     dom.on(body, 'click', cb)
   })
-  afterEach(function () {
+  afterEach(() => {
     dom.off(body, 'click', cb)
   })
-  it('on', function () {
+  it('on', () => {
     body.click()
     expect(cb).toHaveBeenCalled()
   })
-  it('multi', function () {
+  it('multi', () => {
     expect(cb.calls.count()).toEqual(0)
     body.click()
     expect(cb.calls.count()).toEqual(1)
     body.click()
     expect(cb.calls.count()).toBe(2)
   })
-  it('off', function () {
+  it('off', () => {
     body.click()
     expect(cb.calls.count()).toEqual(1)
     dom.off(body, 'click', cb)
