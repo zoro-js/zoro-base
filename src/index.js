@@ -6,11 +6,11 @@
 * @Last modified time: 2016-07-10 13:27:74
 */
 
-
 import * as blob from './blob'
 import * as css from './css'
 import * as consts from './const'
 import * as date from './date'
+import * as dom from './dom'
 import forOwn from './forOwn'
 import * as id from './id'
 import mixin from './mixin'
@@ -18,14 +18,13 @@ import * as object from './object'
 import * as type from './type'
 import * as url from './url'
 
-// util.dom = require('./dom')
-
 object.merge(
   exports,
   blob,
   css,
   consts,
   date,
+  dom,
   {
     forOwn: forOwn
   },

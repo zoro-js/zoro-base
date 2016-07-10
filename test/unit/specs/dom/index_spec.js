@@ -6,16 +6,36 @@
 * @Last modified time: 2016-07-09 19:24:26
 */
 
-var dom = require('dom')
+import {
+  notexist,
+  isEmpty
+} from 'type'
 
-xdescribe('dom', () => {
+import {
+  remove,
+  dataset
+} from 'dom'
+
+describe('dom', () => {
   it('remove', () => {
-    var domStr = '<div id="divRemove"></div>'
+    const domStr = '<div id="divRemove"></div>'
     document.body.innerHTML += domStr
-    var div = document.getElementById('divRemove')
+    const div = document.getElementById('divRemove')
     expect(div.parentNode).toEqual(jasmine.anything())
-    dom.remove(div)
-        // is null or undefined
-    expect(div.parentNode == null).toBe(true)
+    remove(div)
+    expect(notexist(div.parentNode)).toBe(true)
   })
+
+  it('dataset', () => {
+    const domStr = '<div id="divDataset"></div>'
+    document.body.innerHTML += domStr
+    const div = document.getElementById('divDataset')
+    const name = dataset(div, 'name')
+    expect(isEmpty(name)).toBe(true)
+    dataset(div, 'name', 'foo')
+    expect(dataset(div, 'name')).toBe('foo')
+    remove(div)
+  })
+
+  // TODO html2node
 })

@@ -6,27 +6,27 @@
 * @Last modified time: 2016-07-09 19:24:93
 */
 
-var dom = require('dom')
+import { on, target } from 'dom'
 
-xdescribe('target', () => {
-  var de = document.documentElement
-  var bd = document.body
-  var domStr = '<div id="p1"><i id="c1"></i></div><div id="p2"><i id="c2"></i></div>'
+describe('target', () => {
+  const bd = document.body
+  const domStr = '<div id="p1"><i id="c1"></i></div><div id="p2"><i id="c2"></i></div>'
   bd.innerHTML += domStr
-  var p1 = document.getElementById('p1')
-  var c1 = document.getElementById('c1')
-  var p2 = document.getElementById('p2')
-  var c2 = document.getElementById('c2')
+  const p1 = document.getElementById('p1')
+  const p2 = document.getElementById('p2')
+  const c2 = document.getElementById('c2')
+
   it('default', function (done) {
-    dom.on(p1, 'click', function (event) {
-      expect(dom.target(event)).toBe(p1)
+    on(p1, 'click', function (event) {
+      expect(target(event)).toBe(p1)
       done()
     })
     p1.click()
   })
+
   it('bubble', function (done) {
-    dom.on(p2, 'click', function (event) {
-      expect(dom.target(event)).toBe(c2)
+    on(p2, 'click', function (event) {
+      expect(target(event)).toBe(c2)
       done()
     })
     c2.click()

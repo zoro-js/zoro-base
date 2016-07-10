@@ -15,9 +15,9 @@ import {
   getMinuteStr,
   getSecondStr,
   getMillisecondStr,
-  format,
-  dateFromDateTimeLocal
+  format
 } from 'date'
+// dateFromDateTimeLocal
 
 describe('date related', () => {
   const year = 1990

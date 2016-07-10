@@ -6,7 +6,7 @@
 * @Last modified time: 2016-07-10 11:25:33
 */
 
-export default function (obj = {}, callback = ()=>{}, that) {
+export default function (obj = {}, callback = () => {}, that) {
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       callback.call(that, key, obj[key])

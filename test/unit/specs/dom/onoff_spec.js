@@ -6,22 +6,26 @@
 * @Last modified time: 2016-07-09 19:24:05
 */
 
-var dom = require('dom')
+import { on, off } from 'dom'
 
-xdescribe('on/off', () => {
-  var cb
-  var body = document.body
+describe('on/off', () => {
+  let cb
+  const body = document.body
+
   beforeEach(() => {
     cb = jasmine.createSpy('cb')
-    dom.on(body, 'click', cb)
+    on(body, 'click', cb)
   })
+
   afterEach(() => {
-    dom.off(body, 'click', cb)
+    off(body, 'click', cb)
   })
+
   it('on', () => {
     body.click()
     expect(cb).toHaveBeenCalled()
   })
+
   it('multi', () => {
     expect(cb.calls.count()).toEqual(0)
     body.click()
@@ -29,10 +33,11 @@ xdescribe('on/off', () => {
     body.click()
     expect(cb.calls.count()).toBe(2)
   })
+
   it('off', () => {
     body.click()
     expect(cb.calls.count()).toEqual(1)
-    dom.off(body, 'click', cb)
+    off(body, 'click', cb)
     body.click()
     expect(cb.calls.count()).toBe(1)
   })

@@ -1,13 +1,13 @@
-var dom = require('dom')
+import { createIframe } from 'dom'
 
-var http = location.protocol === 'http:'
-var src1 = http ? 'http://www.163.com/' : 'https://www.baidu.com/'
-var src2 = http ? 'http://mail.163.com/' : 'https://github.com/'
+const http = location.protocol === 'http:'
+const src1 = http ? 'http://www.163.com/' : 'https://www.baidu.com/'
+// const src2 = http ? 'http://mail.163.com/' : 'https://github.com/'
 
-xdescribe('iframe', () => {
+describe('iframe', () => {
   describe('createIframe', () => {
     it('empty options', function (done) {
-      var iframe = dom.createIframe()
+      const iframe = createIframe()
       expect(iframe.name).toEqual('')
       expect(+iframe.frameBorder).toEqual(0)
       expect(iframe.style.display).toEqual('none')
@@ -17,24 +17,24 @@ xdescribe('iframe', () => {
       }, 10)
     })
     it('name', () => {
-      var options = {
+      const options = {
         name: 'foo'
       }
-      var iframe = dom.createIframe(options)
+      const iframe = createIframe(options)
       expect(iframe.name).toEqual('foo')
     })
     it('visible', () => {
-      var options = {
+      const options = {
         visible: true
       }
-      var iframe = dom.createIframe(options)
+      const iframe = createIframe(options)
       expect(iframe.style.display).not.toEqual('none')
     })
     it('src', function (done) {
-      var options = {
+      const options = {
         src: src1
       }
-      var iframe = dom.createIframe(options)
+      const iframe = createIframe(options)
       setTimeout(() => {
         expect(iframe.src).toEqual(src1)
         done()
@@ -43,9 +43,9 @@ xdescribe('iframe', () => {
   })
 
   describe('onload related', () => {
-    var onload
-    var options
-    var iframe
+    let onload
+    let options
+    let iframe
     beforeEach(() => {
       onload = jasmine.createSpy('onload')
       options = {
@@ -53,7 +53,7 @@ xdescribe('iframe', () => {
       }
     })
     it('onload', function (done) {
-      iframe = dom.createIframe(options)
+      iframe = createIframe(options)
       setTimeout(() => {
         expect(onload.calls.count()).toEqual(1)
         iframe.src = src1
@@ -65,7 +65,7 @@ xdescribe('iframe', () => {
     })
     it('multi onload', function (done) {
       options.multi = true
-      iframe = dom.createIframe(options)
+      iframe = createIframe(options)
       setTimeout(() => {
         expect(onload.calls.count()).toEqual(1)
         iframe.src = src1

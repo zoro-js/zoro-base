@@ -37,7 +37,7 @@ describe('type related', () => {
     foo: 'bar'
   }
   var nil = null
-  var none = undefined
+  var none
   var date = new Date()
   var reg = /abc/
   var err = new Error()

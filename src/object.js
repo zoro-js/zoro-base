@@ -111,7 +111,7 @@ export function object2string (obj, sep, encode) {
     } else if (isObject(value)) {
       value = JSON.stringify(value)
     }
-    if (!!encode) {
+    if (encode) {
       value = encodeURIComponent(value)
     }
     arr.push(encodeURIComponent(key) + '=' + value)

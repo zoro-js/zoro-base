@@ -72,7 +72,7 @@ describe('object related', () => {
     var foo = {
       a: 0,
       b: 1,
-      c: 2,
+      c: 2
     }
     var bar = {
       a: 'a',
@@ -85,16 +85,16 @@ describe('object related', () => {
       c: 2
     }
     expect(fetch(foo, bar)).toEqual(baz)
-  });
+  })
 
   it('string2object', () => {
     var str = ''
     expect(string2object(str)).toEqual({})
     str = 'a=1'
-    expect(string2object(str)).toEqual({a:'1'})
+    expect(string2object(str)).toEqual({ a: '1' })
     str = 'a=1&b=2'
-    expect(string2object(str, '&')).toEqual({a:'1',b:'2'})
-  });
+    expect(string2object(str, '&')).toEqual({ a: '1', b: '2' })
+  })
 
   it('object2string', () => {
     var obj = {
@@ -102,6 +102,6 @@ describe('object related', () => {
       k2: 2
     }
     expect(object2string(obj)).toBe('k1=v1,k2=2')
-    expect(object2string(obj,'/')).toBe('k1=v1/k2=2')
+    expect(object2string(obj, '/')).toBe('k1=v1/k2=2')
   })
 })

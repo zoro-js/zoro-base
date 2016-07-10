@@ -12,7 +12,7 @@ const dataURL = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAgGBgcG
 
 describe('blob', () => {
   it('blobFromDataURL', () => {
-    if (!!window.Blob) {
+    if (window.Blob) {
       const blob = blobFromDataURL(dataURL)
       expect(blob).toEqual(jasmine.any(Blob))
     }

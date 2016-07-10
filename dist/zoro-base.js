@@ -75,27 +75,31 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var date = _interopRequireWildcard(_date);
 
-	var _forOwn = __webpack_require__(/*! ./forOwn */ 5);
+	var _dom = __webpack_require__(/*! ./dom */ 5);
+
+	var dom = _interopRequireWildcard(_dom);
+
+	var _forOwn = __webpack_require__(/*! ./forOwn */ 7);
 
 	var _forOwn2 = _interopRequireDefault(_forOwn);
 
-	var _id = __webpack_require__(/*! ./id */ 6);
+	var _id = __webpack_require__(/*! ./id */ 8);
 
 	var id = _interopRequireWildcard(_id);
 
-	var _mixin = __webpack_require__(/*! ./mixin */ 7);
+	var _mixin = __webpack_require__(/*! ./mixin */ 9);
 
 	var _mixin2 = _interopRequireDefault(_mixin);
 
-	var _object = __webpack_require__(/*! ./object */ 8);
+	var _object = __webpack_require__(/*! ./object */ 10);
 
 	var object = _interopRequireWildcard(_object);
 
-	var _type = __webpack_require__(/*! ./type */ 9);
+	var _type = __webpack_require__(/*! ./type */ 6);
 
 	var type = _interopRequireWildcard(_type);
 
-	var _url = __webpack_require__(/*! ./url */ 10);
+	var _url = __webpack_require__(/*! ./url */ 11);
 
 	var url = _interopRequireWildcard(_url);
 
@@ -103,21 +107,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
-	// util.dom = require('./dom')
-
-	/**
-	* @Author: Yingya Zhang <zyy>
-	* @Date:   2016-06-23 13:45:00
-	* @Email:  zyy7259@gmail.com
-	* @Last modified by:   zyy
-	* @Last modified time: 2016-07-10 13:27:74
-	*/
-
-	object.merge(exports, blob, css, consts, date, {
+	object.merge(exports, blob, css, consts, date, dom, {
 	  forOwn: _forOwn2['default']
 	}, id, {
 	  mixin: _mixin2['default']
-	}, object, type, url);
+	}, object, type, url); /**
+	                       * @Author: Yingya Zhang <zyy>
+	                       * @Date:   2016-06-23 13:45:00
+	                       * @Email:  zyy7259@gmail.com
+	                       * @Last modified by:   zyy
+	                       * @Last modified time: 2016-07-10 13:27:74
+	                       */
 
 /***/ },
 /* 1 */
@@ -322,6 +322,239 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 5 */
+/*!********************!*\
+  !*** ./src/dom.js ***!
+  \********************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.off = exports.removeEventListener = exports.on = exports.addEventListener = undefined;
+	exports.remove = remove;
+	exports.dataset = dataset;
+	exports.target = target;
+	exports.createIframe = createIframe;
+	exports.html2node = html2node;
+
+	var _type = __webpack_require__(/*! ./type */ 6);
+
+	function remove(node) {
+	  if (node.parentNode) {
+	    node.parentNode.removeChild(node);
+	  }
+	} /**
+	  * @Author: Yingya Zhang <zyy>
+	  * @Date:   2016-07-08 11:29:00
+	  * @Email:  zyy7259@gmail.com
+	  * @Last modified by:   zyy
+	  * @Last modified time: 2016-07-10 13:05:90
+	  */
+
+	function dataset(node, key, value) {
+	  if ((0, _type.exist)(value)) {
+	    node.setAttribute('data-' + key, value);
+	  } else {
+	    return node.getAttribute('data-' + key);
+	  }
+	}
+
+	var addEventListener = exports.addEventListener = function addEventListener(node, type, callback) {
+	  if (node.addEventListener) {
+	    node.addEventListener(type, callback, false);
+	  } else if (node.attachEvent) {
+	    node.attachEvent('on' + type, callback);
+	  }
+	};
+	var on = exports.on = addEventListener;
+
+	var removeEventListener = exports.removeEventListener = function removeEventListener(node, type, callback) {
+	  if (node.removeEventListener) {
+	    node.removeEventListener(type, callback, false);
+	  } else if (node.detachEvent) {
+	    node.detachEvent('on' + type, callback);
+	  }
+	};
+	var off = exports.off = removeEventListener;
+
+	function target(event) {
+	  return event.target || event.srcElement;
+	}
+
+	function createIframe(options) {
+	  options = options || {};
+	  var iframe = document.createElement('iframe');
+	  iframe.frameBorder = 0;
+	  if (options.name) {
+	    iframe.name = options.name;
+	  }
+	  if (!options.visible) {
+	    iframe.style.display = 'none';
+	  }
+	  if ((0, _type.isFunction)(options.onload)) {
+	    var onIframeLoad = function onIframeLoad(event) {
+	      if (!iframe.src) {
+	        return;
+	      }
+	      if (!options.multi) {
+	        off(iframe, 'load', onIframeLoad);
+	      }
+	      options.onload(event);
+	    };
+	    on(iframe, 'load', onIframeLoad);
+	  }
+	  // will trigger onload
+	  var parent = options.parent;
+	  (parent || document.body).appendChild(iframe);
+	  // ensure trigger onload async
+	  var src = options.src || 'about:blank';
+	  setTimeout(function () {
+	    iframe.src = src;
+	  }, 0);
+	  return iframe;
+	}
+
+	function html2node(html) {
+	  var div = window.document.createElement('div');
+	  div.innerHTML = html;
+	  var children = [];
+	  var i = void 0;
+	  var l = void 0;
+	  if (div.children) {
+	    for (i = 0, l = div.children.length; i < l; i++) {
+	      children.push(div.children[i]);
+	    }
+	  } else {
+	    for (i = 0, l = div.childNodes.length; i < l; i++) {
+	      var child = div.childNodes[i];
+	      if (child.nodeType === 1) {
+	        children.push(child);
+	      }
+	    }
+	  }
+	  return children.length > 1 ? div : children[0];
+	}
+
+/***/ },
+/* 6 */
+/*!*********************!*\
+  !*** ./src/type.js ***!
+  \*********************/
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.getClass = getClass;
+	exports.typeOf = typeOf;
+	exports.isString = isString;
+	exports.isNumber = isNumber;
+	exports.isBoolean = isBoolean;
+	exports.isArray = isArray;
+	exports.isFunction = isFunction;
+	exports.isDate = isDate;
+	exports.isRegExp = isRegExp;
+	exports.isError = isError;
+	exports.isnull = isnull;
+	exports.notnull = notnull;
+	exports.undef = undef;
+	exports.notundef = notundef;
+	exports.exist = exist;
+	exports.notexist = notexist;
+	exports.isObject = isObject;
+	exports.isEmpty = isEmpty;
+	/**
+	* @Author: Yingya Zhang <zyy>
+	* @Date:   2016-06-30 09:54:00
+	* @Email:  zyy7259@gmail.com
+	* @Last modified by:   zyy
+	* @Last modified time: 2016-07-10 12:33:38
+	*/
+
+	/*
+	 * 类型相关 API
+	 */
+
+	function getClass(obj) {
+	  return Object.prototype.toString.call(obj).slice(8, -1);
+	}
+
+	function typeOf(obj) {
+	  return getClass(obj).toLowerCase();
+	}
+
+	function isString(obj) {
+	  return typeOf(obj) === 'string';
+	}
+
+	function isNumber(obj) {
+	  return typeOf(obj) === 'number';
+	}
+
+	function isBoolean(obj) {
+	  return typeOf(obj) === 'boolean';
+	}
+
+	function isArray(obj) {
+	  return typeOf(obj) === 'array';
+	}
+
+	function isFunction(obj) {
+	  return typeOf(obj) === 'function';
+	}
+
+	function isDate(obj) {
+	  return typeOf(obj) === 'date';
+	}
+
+	function isRegExp(obj) {
+	  return typeOf(obj) === 'regexp';
+	}
+
+	function isError(obj) {
+	  return typeOf(obj) === 'error';
+	}
+
+	function isnull(obj) {
+	  return obj === null;
+	}
+
+	function notnull(obj) {
+	  return obj !== null;
+	}
+
+	// 需要用 typeof 来比较，兼容性好
+	function undef(obj) {
+	  return typeof obj === 'undefined';
+	}
+
+	function notundef(obj) {
+	  return typeof obj !== 'undefined';
+	}
+
+	function exist(obj) {
+	  return notundef(obj) && notnull(obj);
+	}
+
+	function notexist(obj) {
+	  return undef(obj) || isnull(obj);
+	}
+
+	function isObject(obj) {
+	  return exist(obj) && typeOf(obj) === 'object';
+	}
+
+	/**
+	 * 是否是空值
+	 * @param  {Object}  obj 待检查的对象
+	 * @return {Boolean}     如果是 null/undefined/''/[] 返回 true
+	 */
+	function isEmpty(obj) {
+	  return notexist(obj) || (isString(obj) || isArray(obj)) && obj.length === 0;
+	}
+
+/***/ },
+/* 7 */
 /*!***********************!*\
   !*** ./src/forOwn.js ***!
   \***********************/
@@ -344,7 +577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 6 */
+/* 8 */
 /*!*******************!*\
   !*** ./src/id.js ***!
   \*******************/
@@ -369,7 +602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}();
 
 /***/ },
-/* 7 */
+/* 9 */
 /*!**********************!*\
   !*** ./src/mixin.js ***!
   \**********************/
@@ -379,7 +612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-	var _forOwn = __webpack_require__(/*! ./forOwn */ 5);
+	var _forOwn = __webpack_require__(/*! ./forOwn */ 7);
 
 	var _forOwn2 = _interopRequireDefault(_forOwn);
 
@@ -398,7 +631,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 
 /***/ },
-/* 8 */
+/* 10 */
 /*!***********************!*\
   !*** ./src/object.js ***!
   \***********************/
@@ -415,15 +648,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.string2object = string2object;
 	exports.object2string = object2string;
 
-	var _mixin = __webpack_require__(/*! ./mixin */ 7);
+	var _mixin = __webpack_require__(/*! ./mixin */ 9);
 
 	var _mixin2 = _interopRequireDefault(_mixin);
 
-	var _forOwn = __webpack_require__(/*! ./forOwn */ 5);
+	var _forOwn = __webpack_require__(/*! ./forOwn */ 7);
 
 	var _forOwn2 = _interopRequireDefault(_forOwn);
 
-	var _type = __webpack_require__(/*! ./type */ 9);
+	var _type = __webpack_require__(/*! ./type */ 6);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -559,7 +792,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if ((0, _type.isObject)(value)) {
 	      value = JSON.stringify(value);
 	    }
-	    if (!!encode) {
+	    if (encode) {
 	      value = encodeURIComponent(value);
 	    }
 	    arr.push(encodeURIComponent(key) + '=' + value);
@@ -568,125 +801,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 9 */
-/*!*********************!*\
-  !*** ./src/type.js ***!
-  \*********************/
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.getClass = getClass;
-	exports.typeOf = typeOf;
-	exports.isString = isString;
-	exports.isNumber = isNumber;
-	exports.isBoolean = isBoolean;
-	exports.isArray = isArray;
-	exports.isFunction = isFunction;
-	exports.isDate = isDate;
-	exports.isRegExp = isRegExp;
-	exports.isError = isError;
-	exports.isnull = isnull;
-	exports.notnull = notnull;
-	exports.undef = undef;
-	exports.notundef = notundef;
-	exports.exist = exist;
-	exports.notexist = notexist;
-	exports.isObject = isObject;
-	exports.isEmpty = isEmpty;
-	/**
-	* @Author: Yingya Zhang <zyy>
-	* @Date:   2016-06-30 09:54:00
-	* @Email:  zyy7259@gmail.com
-	* @Last modified by:   zyy
-	* @Last modified time: 2016-07-10 12:33:38
-	*/
-
-	/*
-	 * 类型相关 API
-	 */
-
-	function getClass(obj) {
-	  return Object.prototype.toString.call(obj).slice(8, -1);
-	}
-
-	function typeOf(obj) {
-	  return getClass(obj).toLowerCase();
-	}
-
-	function isString(obj) {
-	  return typeOf(obj) === 'string';
-	}
-
-	function isNumber(obj) {
-	  return typeOf(obj) === 'number';
-	}
-
-	function isBoolean(obj) {
-	  return typeOf(obj) === 'boolean';
-	}
-
-	function isArray(obj) {
-	  return typeOf(obj) === 'array';
-	}
-
-	function isFunction(obj) {
-	  return typeOf(obj) === 'function';
-	}
-
-	function isDate(obj) {
-	  return typeOf(obj) === 'date';
-	}
-
-	function isRegExp(obj) {
-	  return typeOf(obj) === 'regexp';
-	}
-
-	function isError(obj) {
-	  return typeOf(obj) === 'error';
-	}
-
-	function isnull(obj) {
-	  return obj === null;
-	}
-
-	function notnull(obj) {
-	  return obj !== null;
-	}
-
-	// 需要用 typeof 来比较，兼容性好
-	function undef(obj) {
-	  return typeof obj === 'undefined';
-	}
-
-	function notundef(obj) {
-	  return typeof obj !== 'undefined';
-	}
-
-	function exist(obj) {
-	  return notundef(obj) && notnull(obj);
-	}
-
-	function notexist(obj) {
-	  return undef(obj) || isnull(obj);
-	}
-
-	function isObject(obj) {
-	  return exist(obj) && typeOf(obj) === 'object';
-	}
-
-	/**
-	 * 是否是空值
-	 * @param  {Object}  obj 待检查的对象
-	 * @return {Boolean}     如果是 null/undefined/''/[] 返回 true
-	 */
-	function isEmpty(obj) {
-	  return notexist(obj) || (isString(obj) || isArray(obj)) && obj.length === 0;
-	}
-
-/***/ },
-/* 10 */
+/* 11 */
 /*!********************!*\
   !*** ./src/url.js ***!
   \********************/
@@ -699,7 +814,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.genUrlSep = genUrlSep;
 	exports.object2query = object2query;
 
-	var _object = __webpack_require__(/*! ./object */ 8);
+	var _object = __webpack_require__(/*! ./object */ 10);
 
 	function genUrlSep(url) {
 	  return url.indexOf('?') < 0 ? '?' : '&';

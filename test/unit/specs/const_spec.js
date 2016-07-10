@@ -6,31 +6,38 @@
 * @Last modified time: 2016-07-10 13:26:30
 */
 
-import * as consts from 'const'
+import {
+  o,
+  emptyObj,
+  f,
+  emptyFunc,
+  regBlank,
+  regWhiteSpace
+} from 'const'
 
 describe('const', () => {
   it('o', () => {
-    expect(consts.o).toEqual(jasmine.any(Object))
+    expect(o).toEqual(jasmine.any(Object))
   })
   it('emptyObj', () => {
-    expect(consts.emptyObj).toEqual(jasmine.any(Object))
+    expect(emptyObj).toEqual(jasmine.any(Object))
   })
   it('f', () => {
-    expect(consts.f).toEqual(jasmine.any(Function))
+    expect(f).toEqual(jasmine.any(Function))
   })
   it('emptyFunc', () => {
-    expect(consts.emptyFunc).toEqual(jasmine.any(Function))
+    expect(emptyFunc).toEqual(jasmine.any(Function))
   })
   it('regBlank', () => {
     const blank = ' '
-    expect(consts.regBlank.test(blank)).toBe(true)
+    expect(regBlank.test(blank)).toBe(true)
     const noBlank = ''
-    expect(consts.regBlank.test(noBlank)).toBe(false)
+    expect(regBlank.test(noBlank)).toBe(false)
   })
   it('regWhiteSpace', () => {
     const blank = ' '
-    expect(consts.regWhiteSpace.test(blank)).toBe(true)
+    expect(regWhiteSpace.test(blank)).toBe(true)
     const noBlank = ''
-    expect(consts.regWhiteSpace.test(noBlank)).toBe(false)
+    expect(regWhiteSpace.test(noBlank)).toBe(false)
   })
 })

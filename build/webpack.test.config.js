@@ -29,8 +29,8 @@ var config = {
           plugins: [
             'transform-es3-property-literals',
             'transform-es3-member-expression-literals',
-            ["transform-es2015-modules-commonjs", {
-              "loose": true
+            ['transform-es2015-modules-commonjs', {
+              loose: true
             }]
           ]
         }
