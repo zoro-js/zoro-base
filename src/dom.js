@@ -3,13 +3,24 @@
 * @Date:   2016-07-08 11:29:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-10 13:05:90
+* @Last modified time: 2016-07-10 22:19:38
 */
 
 import {
   isFunction,
   exist
 } from './type'
+
+export function calHeight (node) {
+  node = node.cloneNode(true)
+  node.style.display = 'block !important'
+  node.style.opacity = 0
+  node.style.height = ''
+  document.body.appendChild(node)
+  const height = node.offsetHeight
+  document.body.removeChild(node)
+  return height
+}
 
 export function remove (node) {
   if (node.parentNode) {

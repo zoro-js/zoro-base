@@ -3,13 +3,18 @@
 * @Date:   2016-06-26 17:57:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-09 21:59:01
+* @Last modified time: 2016-07-10 22:22:68
 */
 
+var pjson = require('../package.json')
 var env = require('./env')
 var path = require('path')
 var webpack = require('webpack')
-var arrProto = Array.prototype
+// var precss = require('precss')
+// var postcssCustomProperties = require('postcss-custom-properties')
+// var postcssCalc = require('postcss-calc')
+// var autoprefixer = require('autoprefixer')
+// var cssnano = require('cssnano')
 // var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var config = {
@@ -24,6 +29,7 @@ var config = {
     loaders: [
       { test: /\.html$/, loader: 'raw' },
       { test: /\.yaml$/, loader: 'json!yaml' },
+      // { test: /\.css$/, loader: 'style!css!postcss' },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -41,6 +47,9 @@ var config = {
         }
       }
     ]
+  },
+  postcss: function () {
+    return [precss, postcssCustomProperties, postcssCalc, autoprefixer, cssnano]
   },
   resolve: {
     root: [
@@ -62,6 +71,12 @@ var config = {
         amd: 'Regular',
         commonjs: 'regularjs',
         commonjs2: 'regularjs'
+      },
+      'lodash': {
+        root: 'Lodash',
+        amd: 'Lodash',
+        commonjs: 'lodash',
+        commonjs2: 'lodash'
       }
     }
   ],
@@ -78,10 +93,10 @@ var isProduction = env.isProduction()
 if (!isProduction) {
   // sourceMap 相关
   config.output.pathinfo = true
-  // config.devtool = 'eval'
+  config.devtool = 'eval'
 } else {
-  config.output.filename = config.output.filename.replace('.js', '.min.js')
-  arrProto.push.apply(config.plugins, [
+  config.output.filename = config.output.filename.replace('.js', '.' + pjson.version + '.min.js')
+  Array.prototype.push.apply(config.plugins, [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {

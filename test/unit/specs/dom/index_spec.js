@@ -3,7 +3,7 @@
 * @Date:   2016-07-08 11:29:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-09 19:24:26
+* @Last modified time: 2016-07-10 22:18:85
 */
 
 import {
@@ -12,11 +12,26 @@ import {
 } from 'type'
 
 import {
+  calHeight,
   remove,
   dataset
 } from 'dom'
 
 describe('dom', () => {
+  it('calHeight', () => {
+    const height = 42
+    const p = document.createElement('p')
+    p.id = 'calHeight-' + (+new Date())
+    p.style.margin = 0
+    p.style.padding = 0
+    p.style.lineHeight = height + 'px'
+    p.style.fontSize = '18px'
+    const textNode = document.createTextNode('text')
+    p.appendChild(textNode)
+    const height1 = calHeight(p)
+    expect(height1).toBe(height)
+  })
+
   it('remove', () => {
     const domStr = '<div id="divRemove"></div>'
     document.body.innerHTML += domStr
