@@ -120,7 +120,7 @@ return /******/ (function(modules) { // webpackBootstrap
   \***********************/
 /***/ function(module, exports) {
 
-	eval("\"use strict\";\n\nexports.__esModule = true;\n\nexports[\"default\"] = function () {\n  var obj = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];\n  var callback = arguments.length <= 1 || arguments[1] === undefined ? function () {} : arguments[1];\n  var that = arguments[2];\n\n  for (var key in obj) {\n    if (obj.hasOwnProperty(key)) {\n      callback.call(that, key, obj[key]);\n    }\n  }\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** ./src/forOwn.js\n ** module id = 7\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./src/forOwn.js?");
+	eval("\"use strict\";\n\nexports.__esModule = true;\n\nexports[\"default\"] = function () {\n  var obj = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];\n  var callback = arguments.length <= 1 || arguments[1] === undefined ? function () {} : arguments[1];\n  var that = arguments[2];\n\n  for (var key in obj) {\n    if (obj.hasOwnProperty(key)) {\n      callback.call(that, key, obj[key]);\n    }\n  }\n};\n\nmodule.exports = exports[\"default\"]; /**\n                                     * @Author: Yingya Zhang <zyy>\n                                     * @Date:   2016-07-10 11:22:00\n                                     * @Email:  zyy7259@gmail.com\n                                     * @Last modified by:   zyy\n                                     * @Last modified time: 2016-07-10 11:25:33\n                                     */\n\n/*****************\n ** WEBPACK FOOTER\n ** ./src/forOwn.js\n ** module id = 7\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./src/forOwn.js?");
 
 /***/ },
 /* 8 */
@@ -138,7 +138,7 @@ return /******/ (function(modules) { // webpackBootstrap
   \**********************/
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nexports.__esModule = true;\n\nvar _forOwn = __webpack_require__(/*! ./forOwn */ 7);\n\nvar _forOwn2 = _interopRequireDefault(_forOwn);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }\n\nexports['default'] = function (target, source) {\n  (0, _forOwn2['default'])(source, function (key, value) {\n    target[key] = value;\n  });\n}; /**\n   * @Author: Yingya Zhang <zyy>\n   * @Date:   2016-07-08 11:29:00\n   * @Email:  zyy7259@gmail.com\n   * @Last modified by:   zyy\n   * @Last modified time: 2016-07-10 11:27:24\n   */\n\n/*****************\n ** WEBPACK FOOTER\n ** ./src/mixin.js\n ** module id = 9\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./src/mixin.js?");
+	eval("'use strict';\n\nexports.__esModule = true;\n\nvar _forOwn = __webpack_require__(/*! ./forOwn */ 7);\n\nvar _forOwn2 = _interopRequireDefault(_forOwn);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }\n\nexports['default'] = function (target, source) {\n  (0, _forOwn2['default'])(source, function (key, value) {\n    target[key] = value;\n  });\n}; /**\n   * @Author: Yingya Zhang <zyy>\n   * @Date:   2016-07-08 11:29:00\n   * @Email:  zyy7259@gmail.com\n   * @Last modified by:   zyy\n   * @Last modified time: 2016-07-10 11:27:24\n   */\n\nmodule.exports = exports['default'];\n\n/*****************\n ** WEBPACK FOOTER\n ** ./src/mixin.js\n ** module id = 9\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./src/mixin.js?");
 
 /***/ },
 /* 10 */

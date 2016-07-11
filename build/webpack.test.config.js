@@ -2,8 +2,8 @@
 * @Author: Yingya Zhang <zyy>
 * @Date:   2016-07-08 11:29:00
 * @Email:  zyy7259@gmail.com
-* @Last modified by:   zyy
-* @Last modified time: 2016-07-10 22:11:77
+* @Last modified by:
+* @Last modified time: 2016-07-11T11:32:16+08:00
 */
 
 var env = require('./env')
@@ -31,7 +31,8 @@ var config = {
             'transform-es3-member-expression-literals',
             ['transform-es2015-modules-commonjs', {
               loose: true
-            }]
+            }],
+            'add-module-exports'
           ]
         }
       }
