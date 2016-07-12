@@ -3,7 +3,7 @@
 * @Date:   2016-06-26 17:57:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-11T11:46:38+08:00
+* @Last modified time: 2016-07-12T16:37:34+08:00
 */
 
 var pjson = require('../package.json')
@@ -49,9 +49,9 @@ var config = {
       }
     ]
   },
-  postcss: function () {
-    return [precss, postcssCustomProperties, postcssCalc, autoprefixer, cssnano]
-  },
+  // postcss: function () {
+  //   return [precss, postcssCustomProperties, postcssCalc, autoprefixer, cssnano]
+  // },
   resolve: {
     root: [
       path.resolve(__dirname, '../src')
