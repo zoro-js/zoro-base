@@ -3,7 +3,7 @@
 * @Date:   2016-07-08 11:29:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-10 22:29:41
+* @Last modified time: 2016-07-12T16:30:42+08:00
 */
 
 import {
@@ -12,13 +12,14 @@ import {
 } from './type'
 
 export function calHeight (node) {
+  const parent = node.parentNode || document.body
   node = node.cloneNode(true)
   node.style.display = 'block'
   node.style.opacity = 0
   node.style.height = 'auto'
-  document.body.appendChild(node)
+  parent.appendChild(node)
   const height = node.offsetHeight
-  document.body.removeChild(node)
+  parent.removeChild(node)
   return height
 }
 
