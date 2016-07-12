@@ -3,7 +3,7 @@
 * @Date:   2016-07-08 11:29:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-12T16:30:42+08:00
+* @Last modified time: 2016-07-12T16:49:46+08:00
 */
 
 import {
@@ -11,7 +11,7 @@ import {
   exist
 } from './type'
 
-export function calHeight (node) {
+export function calcHeight (node) {
   const parent = node.parentNode || document.body
   node = node.cloneNode(true)
   node.style.display = 'block'

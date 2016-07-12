@@ -12,23 +12,23 @@ import {
 } from 'type'
 
 import {
-  calHeight,
+  calcHeight,
   remove,
   dataset
 } from 'dom'
 
 describe('dom', () => {
-  it('calHeight', () => {
+  it('calcHeight', () => {
     const height = 42
     const p = document.createElement('p')
-    p.id = 'calHeight-' + (+new Date())
+    p.id = 'calcHeight-' + (+new Date())
     p.style.margin = 0
     p.style.padding = 0
     p.style.lineHeight = height + 'px'
     p.style.fontSize = '18px'
     const textNode = document.createTextNode('text')
     p.appendChild(textNode)
-    const height1 = calHeight(p)
+    const height1 = calcHeight(p)
     expect(height1).toBe(height)
   })
 
