@@ -3,7 +3,7 @@
 * @Date:   2016-06-23 13:45:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-10 13:27:74
+* @Last modified time: 2016-07-13T12:04:38+08:00
 */
 
 import * as blob from './blob'
@@ -18,8 +18,8 @@ import * as object from './object'
 import * as type from './type'
 import * as url from './url'
 
-object.merge(
-  exports,
+export default object.merge(
+  {},
   blob,
   css,
   consts,
