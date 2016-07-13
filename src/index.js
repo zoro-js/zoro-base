@@ -3,7 +3,7 @@
 * @Date:   2016-06-23 13:45:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-13T12:04:38+08:00
+* @Last modified time: 2016-07-13T12:13:51+08:00
 */
 
 import * as blob from './blob'
@@ -18,7 +18,7 @@ import * as object from './object'
 import * as type from './type'
 import * as url from './url'
 
-export default object.merge(
+var obj = object.merge(
   {},
   blob,
   css,
@@ -36,3 +36,7 @@ export default object.merge(
   type,
   url
 )
+
+delete obj.__esModule
+
+export default obj
