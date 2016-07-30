@@ -2,7 +2,7 @@
   "name": "zoro-base",
   "version": "1.0.14",
   "description": "base",
-  "main": "src/index.js",
+  "main": "dist/zoro-base.js",
   "scripts": {
     "env": "env",
     "clean": "run-p -lns clean:*",
