@@ -3,7 +3,7 @@
 * @Date:   2016-06-26 17:57:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-08-04T11:18:09+08:00
+* @Last modified time: 2016-08-04T12:03:33+08:00
 */
 
 var pjson = require('../package.json')
@@ -58,7 +58,6 @@ var config = {
     ],
     alias: {
       'data': path.resolve(__dirname, '../data'),
-      'zoro-base': path.resolve(__dirname, '../submodule/zoro-base/src'),
       'regularjs': path.resolve(__dirname, '../node_modules/regularjs/dist/regular'),
       'restate': path.resolve(__dirname, '../node_modules/regular-state/restate-full'),
       'stateman': path.resolve(__dirname, '../node_modules/stateman/stateman')
@@ -94,7 +93,7 @@ var isProduction = env.isProduction()
 if (!isProduction) {
   // sourceMap 相关
   config.output.pathinfo = true
-  config.devtool = 'eval'
+  // config.devtool = 'eval'
 } else {
   Array.prototype.push.apply(config.plugins, [
     new webpack.optimize.OccurrenceOrderPlugin(),

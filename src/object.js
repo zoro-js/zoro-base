@@ -3,7 +3,7 @@
 * @Date:   2016-01-07 22:16:00
 * @Email:  zyy7259@gmail.com
 * @Last modified by:   zyy
-* @Last modified time: 2016-07-10 12:33:64
+* @Last modified time: 2016-08-04T12:05:07+08:00
 */
 
 import mixin from './mixin'
@@ -30,9 +30,9 @@ export function simpleClone (obj) {
  * @return {Object}            目标对象
  */
 export function merge (target = {}, ...sources) {
-  for (const source of sources) {
+  sources.forEach(source => {
     mixin(target, source)
-  }
+  })
   return target
 }
 
