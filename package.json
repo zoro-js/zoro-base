@@ -1,8 +1,8 @@
 {
   "name": "zoro-base",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "base",
-  "main": "dist/zoro-base.min.js",
+  "main": "dist/zoro-base.js",
   "scripts": {
     "env": "env",
     "clean": "run-p -lns clean:*",

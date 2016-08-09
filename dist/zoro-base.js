@@ -52,56 +52,53 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _blob = __webpack_require__(/*! ./blob */ 1);
+	var _blob = __webpack_require__(1);
 
 	var blob = _interopRequireWildcard(_blob);
 
-	var _css = __webpack_require__(/*! ./css */ 2);
+	var _css = __webpack_require__(2);
 
 	var css = _interopRequireWildcard(_css);
 
-	var _const = __webpack_require__(/*! ./const */ 3);
+	var _const = __webpack_require__(3);
 
 	var consts = _interopRequireWildcard(_const);
 
-	var _date = __webpack_require__(/*! ./date */ 4);
+	var _date = __webpack_require__(4);
 
 	var date = _interopRequireWildcard(_date);
 
-	var _dom = __webpack_require__(/*! ./dom */ 5);
+	var _dom = __webpack_require__(5);
 
 	var dom = _interopRequireWildcard(_dom);
 
-	var _forOwn = __webpack_require__(/*! ./forOwn */ 7);
+	var _forOwn = __webpack_require__(7);
 
 	var _forOwn2 = _interopRequireDefault(_forOwn);
 
-	var _id = __webpack_require__(/*! ./id */ 8);
+	var _id = __webpack_require__(8);
 
 	var id = _interopRequireWildcard(_id);
 
-	var _mixin = __webpack_require__(/*! ./mixin */ 9);
+	var _mixin = __webpack_require__(9);
 
 	var _mixin2 = _interopRequireDefault(_mixin);
 
-	var _object = __webpack_require__(/*! ./object */ 10);
+	var _object = __webpack_require__(10);
 
 	var object = _interopRequireWildcard(_object);
 
-	var _type = __webpack_require__(/*! ./type */ 6);
+	var _type = __webpack_require__(6);
 
 	var type = _interopRequireWildcard(_type);
 
-	var _url = __webpack_require__(/*! ./url */ 11);
+	var _url = __webpack_require__(11);
 
 	var url = _interopRequireWildcard(_url);
 
@@ -128,9 +125,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 1 */
-/*!*********************!*\
-  !*** ./src/blob.js ***!
-  \*********************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -168,9 +162,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 2 */
-/*!********************!*\
-  !*** ./src/css.js ***!
-  \********************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -210,9 +201,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 3 */
-/*!**********************!*\
-  !*** ./src/const.js ***!
-  \**********************/
 /***/ function(module, exports) {
 
 	"use strict";
@@ -237,9 +225,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 4 */
-/*!*********************!*\
-  !*** ./src/date.js ***!
-  \*********************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -329,9 +314,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 5 */
-/*!********************!*\
-  !*** ./src/dom.js ***!
-  \********************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -345,7 +327,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.createIframe = createIframe;
 	exports.html2node = html2node;
 
-	var _type = __webpack_require__(/*! ./type */ 6);
+	var _type = __webpack_require__(6);
 
 	function calcHeight(node) {
 	  var parent = node.parentNode || document.body;
@@ -457,9 +439,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 6 */
-/*!*********************!*\
-  !*** ./src/type.js ***!
-  \*********************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -575,9 +554,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 7 */
-/*!***********************!*\
-  !*** ./src/forOwn.js ***!
-  \***********************/
 /***/ function(module, exports) {
 
 	"use strict";
@@ -606,9 +582,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 8 */
-/*!*******************!*\
-  !*** ./src/id.js ***!
-  \*******************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -631,16 +604,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 9 */
-/*!**********************!*\
-  !*** ./src/mixin.js ***!
-  \**********************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _forOwn = __webpack_require__(/*! ./forOwn */ 7);
+	var _forOwn = __webpack_require__(7);
 
 	var _forOwn2 = _interopRequireDefault(_forOwn);
 
@@ -662,9 +632,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 10 */
-/*!***********************!*\
-  !*** ./src/object.js ***!
-  \***********************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -678,15 +645,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.string2object = string2object;
 	exports.object2string = object2string;
 
-	var _mixin = __webpack_require__(/*! ./mixin */ 9);
+	var _mixin = __webpack_require__(9);
 
 	var _mixin2 = _interopRequireDefault(_mixin);
 
-	var _forOwn = __webpack_require__(/*! ./forOwn */ 7);
+	var _forOwn = __webpack_require__(7);
 
 	var _forOwn2 = _interopRequireDefault(_forOwn);
 
-	var _type = __webpack_require__(/*! ./type */ 6);
+	var _type = __webpack_require__(6);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -810,9 +777,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 11 */
-/*!********************!*\
-  !*** ./src/url.js ***!
-  \********************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -822,7 +786,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.genUrlSep = genUrlSep;
 	exports.object2query = object2query;
 
-	var _object = __webpack_require__(/*! ./object */ 10);
+	var _object = __webpack_require__(10);
 
 	function genUrlSep(url) {
 	  return url.indexOf('?') < 0 ? '?' : '&';
