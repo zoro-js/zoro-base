@@ -1,6 +1,6 @@
 {
   "name": "zoro-base",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "base",
   "main": "dist/zoro-base.js",
   "scripts": {
@@ -60,6 +60,5 @@
     "yargs": "^3.31.0"
   },
   "dependencies": {
-    "es3ify-loader": "^0.2.0"
   }
 }
