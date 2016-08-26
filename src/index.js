@@ -26,11 +26,11 @@ var obj = object.merge(
   date,
   dom,
   {
-    forOwn: forOwn
+    forOwn
   },
   id,
   {
-    mixin: mixin
+    mixin
   },
   object,
   type,
