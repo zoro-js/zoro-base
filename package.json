@@ -4,6 +4,8 @@
   "description": "base",
   "main": "dist/zoro-base.js",
   "scripts": {
+    "unit": "karma start build/karma.unit.config.js",
+    "unit:build": "webpack --config build/webpack.test.config.js",
     "env": "env",
     "clean": "run-p -lns clean:*",
     "clean:css": "rimraf dist/css",
