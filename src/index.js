@@ -13,6 +13,7 @@ import * as date from './date'
 import * as dom from './dom'
 import forOwn from './forOwn'
 import * as id from './id'
+import * as json from './json'
 import mixin from './mixin'
 import * as object from './object'
 import * as type from './type'
@@ -29,6 +30,7 @@ var obj = object.merge(
     forOwn
   },
   id,
+  json,
   {
     mixin
   },
@@ -37,6 +39,7 @@ var obj = object.merge(
   url
 )
 
+// TODO obj.__esModule ???
 delete obj.__esModule
 
 export default obj
