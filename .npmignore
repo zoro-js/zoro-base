@@ -2,5 +2,5 @@ build
 src
 test
 third
-.eslint*
-webpack*
+*eslint*
+*webpack*

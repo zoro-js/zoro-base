@@ -1,4 +1,6 @@
 module.exports = require('zoro-kit/build/webpack.config.lib.js')({
-  filename: 'zoro-base.js',
-  library: 'ZoroBase'
+  output: {
+    filename: 'zoro-base.js',
+    library: 'ZoroBase'
+  }
 })
