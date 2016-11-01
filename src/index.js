@@ -12,6 +12,7 @@ import * as consts from './const'
 import * as date from './date'
 import * as dom from './dom'
 import forOwn from './forOwn'
+import getGlobal from './getGlobal'
 import * as id from './id'
 import * as json from './json'
 import mixin from './mixin'
@@ -27,7 +28,8 @@ var obj = object.merge(
   date,
   dom,
   {
-    forOwn
+    forOwn,
+    getGlobal
   },
   id,
   json,
