@@ -150,21 +150,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // convert base64/URLEncoded data component to raw binary data held in a string
 	  var byteString = void 0;
 	  if (dataURL.split(',')[0].indexOf('base64') >= 0) {
-	    byteString = window.atob(dataURL.split(',')[1]);
+	    byteString = self.atob(dataURL.split(',')[1]);
 	  } else {
-	    byteString = window.decodeURIComponent(dataURL.split(',')[1]);
+	    byteString = self.decodeURIComponent(dataURL.split(',')[1]);
 	  }
 	
 	  // separate out the mime component
 	  var mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
 	
 	  // write the bytes of the string to a typed array
-	  var ia = new window.Uint8Array(byteString.length);
+	  var ia = new self.Uint8Array(byteString.length);
 	  for (var i = 0; i < byteString.length; i++) {
 	    ia[i] = byteString.charCodeAt(i);
 	  }
 	
-	  return new window.Blob([ia], { type: mimeString });
+	  return new self.Blob([ia], { type: mimeString });
 	}
 
 /***/ },
@@ -424,7 +424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	function html2node(html) {
-	  var div = window.document.createElement('div');
+	  var div = document.createElement('div');
 	  div.innerHTML = html;
 	  var children = [];
 	  var i = void 0;

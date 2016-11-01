@@ -93,7 +93,7 @@ export function createIframe (options) {
 }
 
 export function html2node (html) {
-  const div = window.document.createElement('div')
+  const div = document.createElement('div')
   div.innerHTML = html
   const children = []
   let i
