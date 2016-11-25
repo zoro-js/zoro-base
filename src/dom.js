@@ -11,6 +11,19 @@ import {
   exist
 } from './type'
 
+export function containsNode (parent, child) {
+  if (parent === child) {
+    return true
+  }
+  while (child.parentNode) {
+    if (child.parentNode === parent) {
+      return true
+    }
+    child = child.parentNode
+  }
+  return false
+}
+
 export function calcHeight (node) {
   const parent = node.parentNode || document.body
   node = node.cloneNode(true)

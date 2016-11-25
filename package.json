@@ -1,6 +1,6 @@
 {
   "name": "zoro-base",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "base",
   "main": "dist/zoro-base.js",
   "scripts": {
@@ -52,5 +52,7 @@
     "yargs": "^5.0.0",
     "zoro-kit": "*"
   },
-  "dependencies": {}
+  "dependencies": {
+    "webpack-merge": "^0.15.0"
+  }
 }

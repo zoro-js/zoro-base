@@ -362,6 +362,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	exports.__esModule = true;
 	exports.off = exports.removeEventListener = exports.on = exports.addEventListener = undefined;
+	exports.containsNode = containsNode;
 	exports.calcHeight = calcHeight;
 	exports.remove = remove;
 	exports.dataset = dataset;
@@ -370,6 +371,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.html2node = html2node;
 	
 	var _type = __webpack_require__(7);
+	
+	function containsNode(parent, child) {
+	  if (parent === child) {
+	    return true;
+	  }
+	  while (child.parentNode) {
+	    if (child.parentNode === parent) {
+	      return true;
+	    }
+	    child = child.parentNode;
+	  }
+	  return false;
+	} /**
+	  * @Author: Yingya Zhang <zyy>
+	  * @Date:   2016-07-08 11:29:00
+	  * @Email:  zyy7259@gmail.com
+	  * @Last modified by:   zyy
+	  * @Last modified time: 2016-07-12T16:49:46+08:00
+	  */
 	
 	function calcHeight(node) {
 	  var parent = node.parentNode || document.body;
@@ -381,13 +401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var height = node.offsetHeight;
 	  parent.removeChild(node);
 	  return height;
-	} /**
-	  * @Author: Yingya Zhang <zyy>
-	  * @Date:   2016-07-08 11:29:00
-	  * @Email:  zyy7259@gmail.com
-	  * @Last modified by:   zyy
-	  * @Last modified time: 2016-07-12T16:49:46+08:00
-	  */
+	}
 	
 	function remove(node) {
 	  if (node.parentNode) {
