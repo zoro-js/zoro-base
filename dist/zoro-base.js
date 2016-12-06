@@ -106,7 +106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var type = _interopRequireWildcard(_type);
 	
-	var _url = __webpack_require__(16);
+	var _url = __webpack_require__(13);
 	
 	var url = _interopRequireWildcard(_url);
 	
@@ -143,6 +143,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	exports.__esModule = true;
 	exports.blobFromDataURL = blobFromDataURL;
+	exports.blobFromCanvas = blobFromCanvas;
 	
 	var _getGlobal = __webpack_require__(2);
 	
@@ -177,6 +178,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  * @Last modified by:   zyy
 	  * @Last modified time: 2016-07-10 12:42:13
 	  */
+	
+	function blobFromCanvas(canvas, cb) {
+	  var mimeType = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'image/jpeg';
+	  var quality = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+	
+	  if (canvas.toBlob) {
+	    canvas.toBlob(cb, mimeType, quality);
+	  } else {
+	    var dataURL = canvas.toDataURL(mimeType, quality);
+	    cb(blobFromDataURL(dataURL));
+	  }
+	}
 
 /***/ },
 /* 2 */
@@ -617,8 +630,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.__esModule = true;
 	
 	exports["default"] = function () {
-	  var obj = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var callback = arguments.length <= 1 || arguments[1] === undefined ? function () {} : arguments[1];
+	  var obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
 	  var that = arguments[2];
 	
 	  for (var key in obj) {
@@ -736,11 +749,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	exports.__esModule = true;
-	
-	var _stringify = __webpack_require__(13);
-	
-	var _stringify2 = _interopRequireDefault(_stringify);
-	
 	exports.simpleClone = simpleClone;
 	exports.merge = merge;
 	exports.fillUndef = fillUndef;
@@ -762,7 +770,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function simpleClone(obj) {
-	  return JSON.parse((0, _stringify2['default'])(obj));
+	  return JSON.parse(JSON.stringify(obj));
 	}
 	
 	/**
@@ -781,7 +789,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	*/
 	
 	function merge() {
-	  var target = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	
 	  for (var _len = arguments.length, sources = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
 	    sources[_key - 1] = arguments[_key];
@@ -840,8 +848,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	function string2object() {
-	  var string = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
-	  var sep = arguments.length <= 1 || arguments[1] === undefined ? ',' : arguments[1];
+	  var string = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+	  var sep = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ',';
 	
 	  var obj = {};
 	  string.split(sep).forEach(function (pair) {
@@ -869,7 +877,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if ((0, _type.isArray)(value)) {
 	      value = value.join(',');
 	    } else if ((0, _type.isObject)(value)) {
-	      value = (0, _stringify2['default'])(value);
+	      value = JSON.stringify(value);
 	    }
 	    if (encode) {
 	      value = encodeURIComponent(value);
@@ -881,29 +889,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(14), __esModule: true };
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var core  = __webpack_require__(15)
-	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
-	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
-	  return $JSON.stringify.apply($JSON, arguments);
-	};
-
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-	var core = module.exports = {version: '2.4.0'};
-	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ },
-/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
