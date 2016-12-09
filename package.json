@@ -1,6 +1,6 @@
 {
   "name": "zoro-base",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "base",
   "main": "dist/zoro-base.js",
   "scripts": {
@@ -25,6 +25,7 @@
     "watch:js": "npm run build:js --silent -- --watch",
     "watch-:lint": "watch 'npm run lint' -du --interval=0.25 --ignoreDirectoryPattern='/third|submodule|dist|node_modules/i' --filter=build/watchFilter.eslint.js",
     "dev": "npm run watch",
+    "dev:nosm": "NO_SOURCE_MAP=true npm run watch",
     "preprod": "npm run clean-dist",
     "prod": "cross-env NODE_ENV=production npm run build:js",
     "server": "puer & npm run dev",

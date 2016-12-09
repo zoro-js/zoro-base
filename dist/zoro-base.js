@@ -454,10 +454,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function createIframe(options) {
 	  options = options || {};
-	  var iframe = document.createElement('iframe');
-	  iframe.frameBorder = 0;
+	  var iframe;
 	  if (options.name) {
-	    iframe.name = options.name;
+	    try {
+	      iframe = document.createElement('<iframe name="' + options.name + '"></iframe>');
+	      iframe.frameBorder = 0;
+	    } catch (e) {
+	      iframe = document.createElement('iframe');
+	      iframe.name = options.name;
+	    }
+	  } else {
+	    iframe = document.createElement('iframe');
 	  }
 	  if (!options.visible) {
 	    iframe.style.display = 'none';
