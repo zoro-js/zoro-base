@@ -79,7 +79,7 @@ export function createIframe (options) {
     try {
       iframe = document.createElement('<iframe name="' + options.name + '"></iframe>')
       iframe.frameBorder = 0
-    } catch (e) {
+    } catch (error) {
       iframe = document.createElement('iframe')
       iframe.name = options.name
     }

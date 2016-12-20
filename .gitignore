@@ -1,3 +1,6 @@
+/dist
+.idea
+.cache
 
 # webpack stats
 *stats.json

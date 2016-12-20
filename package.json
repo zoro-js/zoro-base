@@ -1,6 +1,6 @@
 {
   "name": "zoro-base",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "base",
   "main": "dist/zoro-base.js",
   "scripts": {
