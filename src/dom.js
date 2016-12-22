@@ -89,16 +89,17 @@ export function createIframe (options) {
   if (!options.visible) {
     iframe.style.display = 'none'
   }
-  if (isFunction(options.onload)) {
-    var onIframeLoad = function (event) {
-      if (!iframe.src) {
-        return
-      }
-      if (!options.multi) {
-        off(iframe, 'load', onIframeLoad)
-      }
-      options.onload(event)
+  // on load
+  function onIframeLoad (event) {
+    if (!iframe.src) {
+      return
     }
+    if (!options.multi) {
+      off(iframe, 'load', onIframeLoad)
+    }
+    options.onload(event)
+  }
+  if (isFunction(options.onload)) {
     on(iframe, 'load', onIframeLoad)
   }
     // will trigger onload

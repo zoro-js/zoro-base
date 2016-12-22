@@ -469,16 +469,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (!options.visible) {
 	    iframe.style.display = 'none';
 	  }
+	  // on load
+	  function onIframeLoad(event) {
+	    if (!iframe.src) {
+	      return;
+	    }
+	    if (!options.multi) {
+	      off(iframe, 'load', onIframeLoad);
+	    }
+	    options.onload(event);
+	  }
 	  if ((0, _type.isFunction)(options.onload)) {
-	    var onIframeLoad = function onIframeLoad(event) {
-	      if (!iframe.src) {
-	        return;
-	      }
-	      if (!options.multi) {
-	        off(iframe, 'load', onIframeLoad);
-	      }
-	      options.onload(event);
-	    };
 	    on(iframe, 'load', onIframeLoad);
 	  }
 	  // will trigger onload
