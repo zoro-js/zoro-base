@@ -382,6 +382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.target = target;
 	exports.createIframe = createIframe;
 	exports.html2node = html2node;
+	exports.scrollTop = scrollTop;
 	
 	var _type = __webpack_require__(7);
 	
@@ -512,6 +513,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	  return children.length > 1 ? div : children[0];
+	}
+	
+	function scrollTop(top) {
+	  if ((0, _type.exist)(top)) {
+	    document.documentElement.scrollTop = document.body.scrollTop = top;
+	  }
+	  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 	}
 
 /***/ },

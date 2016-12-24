@@ -133,3 +133,10 @@ export function html2node (html) {
   }
   return children.length > 1 ? div : children[0]
 }
+
+export function scrollTop (top) {
+  if (exist(top)) {
+    document.documentElement.scrollTop = document.body.scrollTop = top
+  }
+  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+}
